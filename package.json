@@ -1,0 +1,32 @@
+{
+  "name": "rbac-otp-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "concurrently \"nodemon src/server.js\" \"npm --prefix dashboard run dev\"",
+    "dashboard": "npm --prefix dashboard run dev",
+    "build:dashboard": "npm --prefix dashboard run build",
+    "start:all": "concurrently \"node src/server.js\" \"npm --prefix dashboard start\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.2",
+    "helmet": "^8.2.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.7.4",
+    "morgan": "^1.11.0"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3",
+    "nodemon": "^3.1.14"
+  }
+}

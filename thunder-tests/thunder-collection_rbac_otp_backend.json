@@ -1,0 +1,182 @@
+{
+  "clientName": "Thunder Client",
+  "collectionName": "RBAC OTP Backend API",
+  "collectionId": "col_rbac_otp_backend",
+  "dateExported": "2026-07-10T12:00:00.000Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "_id": "fol_auth",
+      "name": "Authentication",
+      "sortNum": 10000
+    },
+    {
+      "_id": "fol_users",
+      "name": "Users Management",
+      "sortNum": 20000
+    },
+    {
+      "_id": "fol_logs",
+      "name": "System Audit Logs",
+      "sortNum": 30000
+    }
+  ],
+  "requests": [
+    {
+      "_id": "req_send_otp",
+      "colId": "col_rbac_otp_backend",
+      "containerId": "fol_auth",
+      "name": "1. Send OTP",
+      "url": "http://localhost:8000/auth/send-otp",
+      "method": "POST",
+      "sortNum": 10000,
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"mobile\": \"9999999991\"\n}"
+      }
+    },
+    {
+      "_id": "req_verify_otp",
+      "colId": "col_rbac_otp_backend",
+      "containerId": "fol_auth",
+      "name": "2. Verify OTP",
+      "url": "http://localhost:8000/auth/verify-otp",
+      "method": "POST",
+      "sortNum": 20000,
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"mobile\": \"9999999991\",\n  \"otp\": \"123456\"\n}"
+      }
+    },
+    {
+      "_id": "req_get_profile",
+      "colId": "col_rbac_otp_backend",
+      "containerId": "fol_users",
+      "name": "3. Get User Profile",
+      "url": "http://localhost:8000/users/profile",
+      "method": "GET",
+      "sortNum": 30000,
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{YOUR_JWT_TOKEN}}"
+        }
+      ]
+    },
+    {
+      "_id": "req_get_users",
+      "colId": "col_rbac_otp_backend",
+      "containerId": "fol_users",
+      "name": "4. List All Users",
+      "url": "http://localhost:8000/users",
+      "method": "GET",
+      "sortNum": 40000,
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{YOUR_JWT_TOKEN}}"
+        }
+      ]
+    },
+    {
+      "_id": "req_create_user",
+      "colId": "col_rbac_otp_backend",
+      "containerId": "fol_users",
+      "name": "5. Create New User",
+      "url": "http://localhost:8000/users",
+      "method": "POST",
+      "sortNum": 50000,
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{YOUR_JWT_TOKEN}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Test Operator\",\n  \"mobile\": \"9999999995\",\n  \"role\": \"USER\"\n}"
+      }
+    },
+    {
+      "_id": "req_update_role",
+      "colId": "col_rbac_otp_backend",
+      "containerId": "fol_users",
+      "name": "6. Update User Role",
+      "url": "http://localhost:8000/users/{{USER_ID}}/role",
+      "method": "PATCH",
+      "sortNum": 60000,
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{YOUR_JWT_TOKEN}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"role\": \"MANAGER\"\n}"
+      }
+    },
+    {
+      "_id": "req_delete_user",
+      "colId": "col_rbac_otp_backend",
+      "containerId": "fol_users",
+      "name": "7. Delete User Record",
+      "url": "http://localhost:8000/users/{{USER_ID}}",
+      "method": "DELETE",
+      "sortNum": 70000,
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{YOUR_JWT_TOKEN}}"
+        }
+      ]
+    },
+    {
+      "_id": "req_get_logs",
+      "colId": "col_rbac_otp_backend",
+      "containerId": "fol_logs",
+      "name": "8. Retrieve System Logs",
+      "url": "http://localhost:8000/logs?page=1&limit=10",
+      "method": "GET",
+      "sortNum": 80000,
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{YOUR_JWT_TOKEN}}"
+        }
+      ]
+    },
+    {
+      "_id": "req_get_login_logs",
+      "colId": "col_rbac_otp_backend",
+      "containerId": "fol_logs",
+      "name": "9. Retrieve Login Logs Only",
+      "url": "http://localhost:8000/logs/login?page=1&limit=10",
+      "method": "GET",
+      "sortNum": 90000,
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{YOUR_JWT_TOKEN}}"
+        }
+      ]
+    },
+    {
+      "_id": "req_get_log_stats",
+      "colId": "col_rbac_otp_backend",
+      "containerId": "fol_logs",
+      "name": "10. Retrieve Dashboard Stats",
+      "url": "http://localhost:8000/logs/stats",
+      "method": "GET",
+      "sortNum": 100000,
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{YOUR_JWT_TOKEN}}"
+        }
+      ]
+    }
+  ]
+}
